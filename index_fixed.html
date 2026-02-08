@@ -1,0 +1,64 @@
+<!DOCTYPE html>\n<!-- fixed version -->\n<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Will You Be My Valentine?</title>
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Allura',cursive}
+body{margin:0;height:100vh;overflow:hidden}
+.background{position:fixed;inset:0;background:url("images/bg1.jpg") center/cover no-repeat;filter:blur(4px) brightness(.9);z-index:-3}
+.overlay{position:fixed;inset:0;background:rgba(255,210,230,.6);z-index:-2}
+.hearts span{position:fixed;bottom:-30px;font-size:22px;animation:floatUp linear forwards}
+@keyframes floatUp{to{transform:translateY(-120vh);opacity:0}}
+#questionScreen,#letterScreen{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#letterScreen{display:none}
+h1{font-size:clamp(2rem,5vw,3rem);color:#a80045;margin-bottom:30px}
+.buttons{position:relative;width:260px;height:160px}
+button{position:absolute;font-size:1.6rem;padding:12px 26px;border-radius:30px;border:none;cursor:pointer}
+#yesBtn{background:#ff4d88;color:#fff;left:50%;transform:translateX(-50%)}
+#noBtn{background:#333;color:#fff}
+.instruction{font-size:1.4rem;color:#6b0030;margin-bottom:15px}
+.scroll-container{width:min(90vw,420px);height:90px;overflow:hidden;background:#f2d7a0;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.scroll{padding:35px;background:linear-gradient(#fff9e6,#f2d7a0);transform:translateY(-70%);transition:.25s}
+.scroll.open{transform:translateY(0)}
+.scroll p{font-size:1.5rem;line-height:1.8;color:#4b1c1c;white-space:pre-line}
+.confetti{position:fixed;width:10px;height:10px;animation:confettiFall linear forwards}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="background"></div><div class="overlay"></div><div class="hearts"></div>
+<div id="questionScreen">
+<h1>Will you be my Valentine? 💖</h1>
+<div class="buttons">
+<button id="yesBtn">Yes 💘</button>
+<button id="noBtn">No 🙄</button>
+</div></div>
+<div id="letterScreen">
+<div class="instruction">💌 Drag the scroll DOWN to open your letter</div>
+<div class="scroll-container"><div class="scroll" id="scroll"><p>
+My love,
+
+WRITE YOUR LETTER HERE ❤️
+
+Happy Valentine’s Day
+</p></div></div></div>
+<script>
+const hearts=document.querySelector(".hearts");
+setInterval(()=>{const h=document.createElement("span");h.textContent="💗";h.style.left=Math.random()*100+"vw";h.style.animationDuration=6+Math.random()*4+"s";hearts.appendChild(h);setTimeout(()=>h.remove(),1e4)},500);
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseenter",()=>{noBtn.style.left=Math.random()*200+"px";noBtn.style.top=Math.random()*120+"px"});
+document.getElementById("yesBtn").addEventListener("click",()=>{
+for(let i=0;i<100;i++){const c=document.createElement("div");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=`hsl(${Math.random()*360},100%,60%)`;c.style.animationDuration=2+Math.random()*2+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4e3)}
+setTimeout(()=>{questionScreen.style.display="none";letterScreen.style.display="flex"},700)
+});
+const scroll=document.getElementById("scroll");let startY=null;
+scroll.addEventListener("mousedown",e=>startY=e.clientY);
+scroll.addEventListener("touchstart",e=>startY=e.touches[0].clientY);
+document.addEventListener("mousemove",e=>{if(startY&&e.clientY-startY>40)scroll.classList.add("open")});
+document.addEventListener("touchmove",e=>{if(startY&&e.touches[0].clientY-startY>40)scroll.classList.add("open")});
+document.addEventListener("mouseup",()=>startY=null);
+document.addEventListener("touchend",()=>startY=null);
+</script>
+</body></html>
