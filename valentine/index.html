@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Be My Valentine ❤️</title>
 
 <style>
@@ -12,31 +12,45 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'Comic Sans MS', cursive;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* BACKGROUND */
-.bg {
+/* ---------- BACKGROUNDS ---------- */
+.bg-main {
   position: fixed;
   inset: 0;
   background: url('images/bg1.JPG') center/cover no-repeat;
   filter: blur(6px) brightness(0.7);
-  z-index: -2;
+  z-index: -3;
+}
+
+.bg-letter {
+  position: fixed;
+  inset: 0;
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  z-index: -3;
+}
+
+.bg-letter div {
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(0.6);
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(255, 192, 203, 0.25);
-  z-index: -1;
+  background: rgba(255, 182, 193, 0.25);
+  z-index: -2;
 }
 
-/* MAIN CARD */
+/* ---------- ASK CARD ---------- */
 .card {
   max-width: 90%;
-  margin: auto;
-  margin-top: 15vh;
-  background: rgba(255,255,255,0.92);
+  margin: 18vh auto;
+  background: rgba(255,255,255,0.95);
   padding: 30px;
   border-radius: 20px;
   text-align: center;
@@ -47,17 +61,13 @@ h1 {
   color: #e6005c;
 }
 
-/* BUTTONS */
-.buttons {
-  margin-top: 20px;
-}
-
 button {
   padding: 12px 25px;
   font-size: 18px;
   border-radius: 25px;
   border: none;
   cursor: pointer;
+  margin: 10px;
 }
 
 #yes {
@@ -70,26 +80,28 @@ button {
   position: absolute;
 }
 
-/* LETTER PAGE */
+/* ---------- LETTER PAGE ---------- */
 #letterPage {
   display: none;
-  height: 100vh;
-  overflow-y: auto;
-  padding: 40px 20px;
+  min-height: 100vh;
+  padding: 40px 15px;
 }
 
 .letter {
-  max-width: 700px;
+  max-width: 750px;
   margin: auto;
   background: #fffaf0;
-  padding: 30px;
+  padding: 35px;
   border-radius: 20px;
   font-size: 20px;
-  line-height: 1.7;
+  line-height: 1.8;
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+  /* 🔥 THIS FIXES PARAGRAPHS */
+  white-space: pre-line;
 }
 
-/* HEARTS */
+/* ---------- FLOATING HEARTS ---------- */
 .heart {
   position: fixed;
   color: pink;
@@ -98,92 +110,99 @@ button {
 }
 
 @keyframes float {
-  0% {transform: translateY(100vh);}
-  100% {transform: translateY(-10vh);}
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+<!-- BACKGROUNDS -->
+<div class="bg-main" id="bgMain"></div>
+
+<div class="bg-letter" id="bgLetter">
+  <div style="background-image:url('images/bg2.jpg')"></div>
+  <div style="background-image:url('images/bg3.jpg')"></div>
+  <div style="background-image:url('images/bg4.jpg')"></div>
+  <div style="background-image:url('images/bg5.jpg')"></div>
+</div>
+
 <div class="overlay"></div>
 
+<!-- PAGE 1 -->
 <div id="askPage">
   <div class="card">
     <h1>Will you be my Valentine? 💖</h1>
-    <div class="buttons">
-      <button id="yes">Yes 💕</button>
-      <button id="no">No 😛</button>
-    </div>
+    <button id="yes">Yes 💕</button>
+    <button id="no">No 😛</button>
   </div>
 </div>
 
+<!-- PAGE 2 -->
 <div id="letterPage">
   <div class="letter">
-    <p>
 My sweetest reow<33,
 I just tried doing sommething new, hope it works out the best and you enjoy this.
-  Happy Valentines day mi amor.
-  Everyday we fight, every day we cajole
-  I love you with all my heart and i sometimes troll,
-  Fear not about my sarcasm
-  Hidden in it is my care for you and some orgasms (lmao sorry!)
+Happy Valentines day mi amor.
+Everyday we fight, every day we cajole
+I love you with all my heart and i sometimes troll,
+Fear not about my sarcasm
+Hidden in it is my care for you and some orgasms (lmao sorry!)
 
-  Hope this letter finds you well,
-  for, in your absense i cry and i dwell
-  It has been two year together almost
-  To lovers have we become from just dost 
-  Drake was right when he said
-  They say were just friend but i swear
-  when nobodys around,
-  and then he said
-  nothing feels better than this
-  nothing feels better
-  and i truly agree to that.
+Hope this letter finds you well,
+for, in your absense i cry and i dwell
+It has been two year together almost
+To lovers have we become from just dost 
+Drake was right when he said
+They say were just friend but i swear
+when nobodys around,
+and then he said
+nothing feels better than this
+nothing feels better
+and i truly agree to that.
 
-  I love you my sweet princess,
-  stay as beautiful and shining and loving and funny as you are
-  I would love you if you were a worm
-  and i would also km5 if you die
-  I love you the most and you dont ever have to worry about anything in life (because i'd be here for that)
+I love you my sweet princess,
+stay as beautiful and shining and loving and funny as you are
+I would love you if you were a worm
+and i would also km5 if you die
+I love you the most and you dont ever have to worry about anything in life (because i'd be here for that)
 
-  With love,
-  bhubhu<33
-
-    </p>
+With love,
+bhubhu<33
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-/* NO BUTTON RUNAWAY */
+/* RUNAWAY NO BUTTON */
 const noBtn = document.getElementById("no");
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
 });
 
 /* YES BUTTON */
 document.getElementById("yes").addEventListener("click", () => {
   confetti({ particleCount: 200, spread: 120 });
+
   setTimeout(() => {
     document.getElementById("askPage").style.display = "none";
     document.getElementById("letterPage").style.display = "block";
+    document.getElementById("bgMain").style.display = "none";
+    document.getElementById("bgLetter").style.display = "grid";
   }, 800);
 });
 
 /* FLOATING HEARTS */
-for (let i = 0; i < 20; i++) {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-  document.body.appendChild(heart);
+for (let i = 0; i < 18; i++) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.textContent = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (4 + Math.random() * 4) + "s";
+  document.body.appendChild(h);
 }
 </script>
 
